@@ -222,7 +222,7 @@ export default function Resources({ onSelect, selected }) {
             </div>
           </aside>
 
-          <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-14 justify-between">
             <form onSubmit={handleSearch}>
               <div className="flex items-center gap-4">
                 <div className="relative">
@@ -239,7 +239,7 @@ export default function Resources({ onSelect, selected }) {
               </div>
             </form>
 
-            <div className="flex flex-col grow w-full gap-6 text-card">
+            <div className="flex flex-col p-2 grow w-full gap-6 text-card max-h-[585px] overflow-y-scroll scrollbar">
               {
                 loading ? <p className="text-center">Cargando datos...</p> : (
                   error ? <p className="m-auto text-center">{error}</p> :
@@ -256,7 +256,7 @@ export default function Resources({ onSelect, selected }) {
                         </div>
                       ) : (
                         resources.map((resource, i) => (
-                          <div key={i} className={onSelect && "flex items-center overflow-y-scroll"}>
+                          <div key={i} className={onSelect && "flex items-center"}>
                             {onSelect &&
                               <input
                                 type="checkbox"

@@ -23,7 +23,8 @@ export default {
         b1b2: '#3A9FB6',
         c1c2: '#3C5A99',
         inputBg: '#F9F9F9',
-        darkGray: '#444444'
+        darkGray: '#444444',
+        tableHead: '#1B1B1B',
       },
       backgroundImage: {
         'fondo': "url('/fondoLogin.jpg')"
@@ -34,6 +35,7 @@ export default {
         cardContainer: '0px 0px 8px 1px #00000026',
         modal: '0px 0px 12px 0px #00000080',
         home: '0px 0px 4px 1px #00000033',
+        customTable: '0px 0px 4px 1px #00000026',
       },
       fontSize: {
         customTitle: '28px',
@@ -49,7 +51,10 @@ export default {
       },
       transitionDuration: {
         '600': '600ms',
-      }
+      },
+      borderWidth: {
+        half: '0.5px'
+      },
     },
   },
   plugins: [

@@ -2,9 +2,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useEffect, useState } from 'react';
 import { useAppStore } from '../../store/useAppStore';
 import { getReviews, getStudentsById } from '../../services/students.services';
-import { Link, useParams } from "react-router-dom";
-import { FaLongArrowAltLeft } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 import { crearURLCompleta } from '../../utils/urifoto';
+import BackButton from '../../components/BackButtom';
 
 const DetailStudent = () => {
     const { user } = useAppStore();
@@ -34,40 +34,33 @@ const DetailStudent = () => {
     }
 
     return (
-        <div className='flex flex-col'>
-            <div className='flex justify-between'>
-                <Link
-                    to='/student'
-                >
-                    <button
-                        className='flex rounded-md border-darkGray items-center font-medium text-lg w-28 h-12 border p-3 gap-4 text-darkGray'>
-                        <FaLongArrowAltLeft className='w-6 h-6' />
-                        Volver
-                    </button>
-                </Link>
-                <div className='flex w-[254px] gap-4'>
+        <div className='container mx-auto'>
+
+            <div className='flex justify-between items-center'>
+                <BackButton />
+
+                <div className='flex items-center gap-4'>
                     {student.photo ? (
                         <img className='w-fit-[50px] h-fit-[50px] rounded-full' src={crearURLCompleta(student.photo)} />
                     ) : (
                         <span className='flex justify-center items-center font-bold w-[50px] h-[50px] rounded-full bg-Yellow uppercase'>{student?.first_name?.charAt(0) + student?.last_name?.charAt(0)}</span>
                     )}
-                    <div className='flex flex-col'>
-                        <span className='text-xl font-medium'>{student.first_name} {student.last_name}</span>
-                        <span className='text-lg font-normal'>{student.level}</span>
+                    <div className='flex flex-col gap-1'>
+                        <span className='text-xl leading-6 font-medium'>{student.first_name} {student.last_name}</span>
+                        <span className='text-lg leading-5 font-normal'>{student.level}</span>
                     </div>
                 </div>
                 {edit === true ? (
                     <button
                         onClick={handleScore}
-                        className="ml-2 bg-black text-white px-4 py-2 rounded-lg flex items-center">
-                        <EditIcon className="mr-2" />
+                        className="text-center p-3 rounded-lg bg-card hover:bg-Grey text-white font-extrabold tracking-wide ease-out duration-600">
                         Guardar
                     </button>
                 ) : (
                     <button
                         onClick={() => setEdit(true)}
-                        className="ml-2 bg-black text-white px-4 py-2 rounded-lg flex items-center">
-                        <EditIcon className="mr-2" />
+                        className="flex items-center gap-2 p-3 rounded-lg bg-card hover:bg-Grey text-white font-extrabold tracking-wide ease-out duration-600">
+                        <EditIcon fontSize='small' />
                         Editar
                     </button>
                 )}
